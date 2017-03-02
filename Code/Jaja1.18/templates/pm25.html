@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}空气质量{% endblock %}
+
+{% block page_content %}
+
+<header class="jumbotron subhead">
+  <div class="container">
+    <h1>
+      实时空气质量指数(AQI)查询
+    </h1>
+    <p>
+      <small>数据来源:绿色呼吸</small>
+    </p>
+    <a class="btn btn-primary" href="http://www.pm25.com/" target="_blank">
+      了解更多
+    </a>
+  </div>
+</header>
+
+<hr />
+
+<div class="page-header">
+  {{ wtf.quick_form(form) }}
+</div>
+
+<div >
+  {% if cityName %}
+    <h3>查询 <b>{{ cityName }}</b> 的空气质量</h3>
+      <hr />
+    <p>城市：{{ cityName }}</p>
+    <p>AQI指数：{{ aqi }}</p>
+    <p>空气质量：{{ quality }}</p>
+    <p>{{ result }}</p>
+    <a class="btn btn-info" href="{{ url }}" target="_blank">
+      更多详情请点击
+    </a>
+  {% endif %}
+
+</div>
+
+  <hr />
+
+{% endblock %}
